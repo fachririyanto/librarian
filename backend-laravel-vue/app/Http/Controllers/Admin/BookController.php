@@ -72,6 +72,23 @@ class BookController extends Controller
             return redirect()->back()->with('error', $error);
         }
 
+        // save new book
+        $book = new Book();
+        $book->isbn         = $request->isbn;
+        $book->title        = $request->title;
+        $book->author       = $request->author;
+        $book->publisher    = $request->publisher;
+        $book->year         = $request->year;
+        $book->category_id  = $request->category_id;
+        $book->bookcase_id  = $request->bookcase_id;
+        $book->stock        = $request->stock;
+        $book->description  = $request->description;
+        $book->cover        = '';
+        $book->created_by   = auth()->user()->id;
+        $book->created_at   = Carbon::now();
+        $book->updated_at   = Carbon::now();
+        $book->save();
+
         // check cover file
         $cover_path = '';
 
@@ -90,25 +107,12 @@ class BookController extends Controller
 
             // save cover file
             $upload_dir = 'covers';
-            $file_name  = $request->isbn . '.' . $cover->getClientOriginalExtension();
+            $file_name  = $book->id . '.' . $cover->getClientOriginalExtension();
             $cover_path = $cover->storeAs($upload_dir, $file_name, 'public');
         }
 
-        // save new book
-        $book = new Book();
-        $book->isbn         = $request->isbn;
-        $book->title        = $request->title;
-        $book->author       = $request->author;
-        $book->publisher    = $request->publisher;
-        $book->year         = $request->year;
-        $book->category_id  = $request->category_id;
-        $book->bookcase_id  = $request->bookcase_id;
-        $book->stock        = $request->stock;
-        $book->description  = $request->description;
-        $book->cover        = $cover_path;
-        $book->created_by   = auth()->user()->id;
-        $book->created_at   = Carbon::now();
-        $book->updated_at   = Carbon::now();
+        // update cover path
+        $book->cover = $cover_path;
         $book->save();
 
         return redirect()->back()->with('success', 'Book has been added.');
@@ -170,19 +174,19 @@ class BookController extends Controller
         // set cover path
         $cover_path = '';
 
-        // delete cover file if user remove cover file
-        if (empty($input['cover_preview']) && empty($input['cover'])) {
+        // if user remove cover file
+        if (empty($input['cover']) && empty($input['cover_preview'])) {
             if (Storage::exists('public/' . $book->cover)) {
                 Storage::delete('public/' . $book->cover);
             }
         }
 
         // if user not change cover file
-        if ($input['cover_preview'] == $input['cover_old']) {
+        if (('/storage/' . $input['cover_old']) == $input['cover_preview']) {
             $cover_path = $input['cover_old'];
         }
 
-        // upload new cover file
+        // if user upload new cover file
         if ($request->hasFile('cover')) {
             $cover = $request->file('cover');
 
@@ -196,9 +200,14 @@ class BookController extends Controller
                 return redirect()->back()->with('error', 'Cover file type must be jpg, jpeg, or png.');
             }
 
+            // delete old cover file
+            if (Storage::exists('public/' . $book->cover)) {
+                Storage::delete('public/' . $book->cover);
+            }
+
             // save cover file
             $upload_dir = 'covers';
-            $file_name  = $request->isbn . '.' . $cover->getClientOriginalExtension();
+            $file_name  = $id . '.' . $cover->getClientOriginalExtension();
             $cover_path = $cover->storeAs($upload_dir, $file_name, 'public');
         }
 

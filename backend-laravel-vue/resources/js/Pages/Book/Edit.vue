@@ -130,6 +130,8 @@
                     onSuccess: () => {
                         if (this.$page.props.flash.success) {
                             this.form.cover = ''
+                            this.form.cover_preview = this.book.cover === '' || this.book.cover === null ? '' : '/storage/' + this.book.cover
+                            this.form.cover_old = this.book.cover
                         }
                     },
                 })
