@@ -48,7 +48,7 @@
                                 <label for="checkbox-table-1" class="sr-only">checkbox</label>
                             </div>
                         </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900">
                             {{ user.name }}
                         </th>
                         <td class="px-6 py-4">
