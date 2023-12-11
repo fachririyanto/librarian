@@ -59,7 +59,7 @@ class ProfileController extends Controller
         }
 
         // if user not change avatar
-        if ($input['avatar_preview'] == $input['avatar_old']) {
+        if ($input['avatar_preview'] == ('/storage/' . $input['avatar_old'])) {
             $avatar_path = $input['avatar_old'];
         }
 
@@ -75,6 +75,11 @@ class ProfileController extends Controller
             // check file type
             if (!in_array($avatar->getClientOriginalExtension(), ['jpg', 'jpeg', 'png'])) {
                 return redirect()->back()->with('error', 'Avatar file type must be jpg, jpeg, or png.');
+            }
+
+            // delete old avatar file
+            if (Storage::exists('public/' . $profile->avatar)) {
+                Storage::delete('public/' . $profile->avatar);
             }
 
             // save avatar file

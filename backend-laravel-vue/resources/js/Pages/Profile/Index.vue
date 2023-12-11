@@ -102,6 +102,8 @@
                     onSuccess: () => {
                         if (this.$page.props.flash.success) {
                             this.form.avatar = ''
+                            this.form.avatar_preview = this.profile.avatar === '' || this.profile.avatar === null ? '' : '/storage/' + this.profile.avatar
+                            this.form.avatar_old = this.profile.avatar
 
                             store.setAvatar(this.profile.avatar)
                         }
