@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Member extends Model
 {
     use HasFactory;
 
@@ -14,15 +14,16 @@ class Category extends Model
      *
      * @var string
      */
-    protected $table = 'categories';
+    protected $table = 'members';
 
     /**
-     * The attributes that should be cast.
+     * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
-    protected $casts = [
-        'created_at' => 'datetime:d/m/Y - H:i',
-        'updated_at' => 'datetime:d/m/Y - H:i',
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
     ];
 }
