@@ -3,7 +3,7 @@ App for managing a library.
 
 Todo List:
 - [X] Admin - Backend (Laravel, Inertia, Vue)
-- [ ] API (Laravel & JWT Auth)
+- [X] API (Laravel & JWT Auth)
 - [ ] Loan Book - Frontend (NextJS)
 - [ ] Loan Book - Mobile (Flutter)
 
