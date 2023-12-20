@@ -153,12 +153,12 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Fachri Riyanto",
+									"value": "Pipi Hanifah",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "fachririyanto@gmail.com",
+									"value": "phanifah@gmail.com",
 									"type": "text"
 								},
 								{
@@ -194,7 +194,117 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "API-Key",
+										"value": "{{apikey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Pipi Hanifah",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "phanifah@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "abcd1234",
+											"type": "text"
+										},
+										{
+											"key": "repassword",
+											"value": "abcd1234",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{endpoint}}/auth/register",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 20 Dec 2023 12:19:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Register success\",\n    \"data\": {\n        \"member\": \"phanifah@gmail.com\"\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Login",
@@ -258,7 +368,97 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "API-Key",
+										"value": "{{apikey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "fachririyanto@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "aiueo123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{endpoint}}/auth/login",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 20 Dec 2023 13:28:51 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Login success\",\n    \"data\": {\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsaWJyYXJpYW4iLCJzdWIiOjEsImlhdCI6MTcwMzA3ODkzMSwiZXhwIjoxNzAzMTY1MzMxfQ.BJEsSUCNEPpXjx-q2JRwswO-aqjkH21kERQfeh9xZdc\",\n        \"refresh_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsaWJyYXJpYW4iLCJzdWIiOjEsImlhdCI6MTcwMzA3ODkzMSwiZXhwIjoxNzA1NjcwOTMxfQ.htWHj9LRivrDP9eZ6raWmbCoYvevtWVv_d7vJrIZlLg\",\n        \"duration\": 86400\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Refresh Token",
@@ -312,7 +512,90 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Refresh Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "refresh_token",
+											"value": "{{refresh_token}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{endpoint}}/auth/refresh-token",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 20 Dec 2023 14:11:55 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Refresh token success\",\n    \"data\": {\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsaWJyYXJpYW4iLCJzdWIiOjEsImlhdCI6MTcwMzA4MTUxNSwiZXhwIjoxNzAzMTY3OTE1fQ.Vo2KdanCBaTYDr9kgQdZkGqVUUli2Pz5GURxDbOFEcw\",\n        \"refresh_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsaWJyYXJpYW4iLCJzdWIiOjEsImlhdCI6MTcwMzA4MTUxNSwiZXhwIjoxNzA1NjczNTE1fQ.HxD45wMczeF1y1bMMTRGNq55JKmIICC8uZnzMZBFz44\"\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Logout",
@@ -404,7 +687,80 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Me",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/auth/me",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 20 Dec 2023 13:28:55 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=99"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Get profile success\",\n    \"data\": {\n        \"member\": {\n            \"name\": \"Fachri R\",\n            \"email\": \"fachririyanto@gmail.com\",\n            \"phone\": \"081288080023\",\n            \"address\": \"Palmerah, Jakarta Barat\",\n            \"avatar\": \"members/1.jpg\"\n        }\n    }\n}"
+						}
+					]
 				}
 			]
 		},
