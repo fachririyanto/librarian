@@ -26,6 +26,7 @@ Route::middleware('api.key')->prefix('public')->group(function () {
 
     // book routes
     Route::get('/books', [BookController::class, 'index']);
+    Route::get('/books/related/{id}', [BookController::class, 'related']);
     Route::get('/books/{id}', [BookController::class, 'detail']);
 });
 
