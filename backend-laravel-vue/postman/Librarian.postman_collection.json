@@ -45,7 +45,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{endpoint}}/public/books?s=&cat&page=1&limit=10",
+							"raw": "{{endpoint}}/public/books?s=&cat&page=1&limit=1",
 							"host": [
 								"{{endpoint}}"
 							],
@@ -68,7 +68,39 @@
 								},
 								{
 									"key": "limit",
-									"value": "10"
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Related Books",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-Key",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/public/books/related/8?limit=3",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"public",
+								"books",
+								"related",
+								"8"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "3"
 								}
 							]
 						}
