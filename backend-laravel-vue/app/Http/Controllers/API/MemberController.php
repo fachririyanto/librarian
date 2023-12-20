@@ -57,7 +57,7 @@ class MemberController extends Controller
             'code'      => 200,
             'message'   => 'Register success',
             'data'      => [
-                'member' => $member->email,
+                'email' => $member->email,
             ],
         ]);
     }
@@ -156,8 +156,9 @@ class MemberController extends Controller
             'code'      => 200,
             'message'   => 'Login success',
             'data'      => [
-                'token' => $access_token,
+                'token'         => $access_token,
                 'refresh_token' => $refresh_token,
+                'duration'      => $time_exp,
             ],
         ]);
     }
@@ -189,6 +190,7 @@ class MemberController extends Controller
         // decode refresh token
         try {
             $payload = JWT::decode($refresh_token, new Key(env('API_JWT_SECRET'), 'HS256'));
+            $member_id = $payload->sub;
 
             // find member token
             $member = MemberToken::select(
@@ -246,8 +248,9 @@ class MemberController extends Controller
                 'code'      => 200,
                 'message'   => 'Refresh token success',
                 'data'      => [
-                    'token' => $access_token,
+                    'token'         => $access_token,
                     'refresh_token' => $refresh_token,
+                    'duration'      => $time_exp,
                 ],
             ]);
         } catch (\Exception $e) {
