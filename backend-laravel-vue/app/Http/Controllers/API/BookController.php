@@ -14,6 +14,7 @@ class BookController extends Controller
         $cat        = request()->query('cat');
         $page       = request()->query('page');
         $limit      = request()->query('limit');
+        $random     = request()->query('random');
 
         $fields = [
             'books.id', 'title', 'author', 'publisher', 'year', 'cover', 'stock', 'description',
