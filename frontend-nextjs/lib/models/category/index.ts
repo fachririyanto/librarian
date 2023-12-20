@@ -1,10 +1,10 @@
-import { API_Response } from '@/lib/response'
 import type { TypeCategory } from './type'
-import { fetchPublicAPI } from '@/lib/fetch'
+import { fetchAPI } from '@/lib/api'
+import type { API_Response } from '@/lib/api/response'
 
 async function getCategories(): Promise<API_Response<TypeCategory[]>> {
     try {
-        return await fetchPublicAPI<TypeCategory[]>('categories')
+        return await fetchAPI<TypeCategory[]>('public/categories')
     } catch (error) {
         return {
             data: [],

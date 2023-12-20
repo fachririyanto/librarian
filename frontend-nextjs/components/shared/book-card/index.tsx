@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { TypeBook } from '@/lib/models/book'
-import { getStorageURL } from '@/lib/client'
+import { getStorageURL } from '@/lib/api'
 import { BookCardSkeleton } from './skeleton'
 
 function BookCard(book: TypeBook) {

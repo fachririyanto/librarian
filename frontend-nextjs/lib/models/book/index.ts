@@ -1,6 +1,6 @@
 import type { TypeBook } from './type'
-import { fetchPublicAPI } from '@/lib/fetch'
-import { API_Response } from '@/lib/response'
+import { fetchAPI } from '@/lib/api'
+import type { API_Response } from '@/lib/api/response'
 
 type BookParams = {
     s?: string
@@ -18,7 +18,7 @@ async function getBooks(params: BookParams): Promise<API_Response<TypeBook[]>> {
     })
 
     try {
-        return await fetchPublicAPI<TypeBook[]>('books?' + queryParams.toString())
+        return await fetchAPI<TypeBook[]>('public/books?' + queryParams.toString())
     } catch (error) {
         return {
             data: [],
@@ -28,7 +28,7 @@ async function getBooks(params: BookParams): Promise<API_Response<TypeBook[]>> {
 
 async function getRelatedBooks(id: string, limit: number): Promise<API_Response<TypeBook[]>> {
     try {
-        return await fetchPublicAPI<TypeBook[]>('books/related/' + id + '?limit=' + limit.toString())
+        return await fetchAPI<TypeBook[]>('public/books/related/' + id + '?limit=' + limit.toString())
     } catch (error) {
         return {
             data: [],
@@ -38,7 +38,7 @@ async function getRelatedBooks(id: string, limit: number): Promise<API_Response<
 
 async function getBook(id: string): Promise<API_Response<TypeBook>> {
     try {
-        return await fetchPublicAPI<TypeBook>('books/' + id)
+        return await fetchAPI<TypeBook>('public/books/' + id)
     } catch (error) {
         return {
             data: {} as TypeBook,

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { BookList } from '@/components/shared/book-list'
 import { Breadcrumb } from '@/components/shared/breadcrumb'
 import { getBook, getRelatedBooks } from '@/lib/models/book'
-import { getStorageURL } from '@/lib/client'
+import { getStorageURL } from '@/lib/api'
 
 export default async function Page({ params }: { params: { id: string } }) {
     const { data } = await getBook(params.id)
