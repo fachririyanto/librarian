@@ -32,13 +32,17 @@ App for managing a library.
 - [X] Login & Register
 - [ ] Loan Books
 - [ ] Dashboard
-- [ ] Update Profile
+- [X] Update Profile
+- [X] Change Password
+- [ ] Logout All
 
 #### Loan Book - Mobile App (Flutter/React Native)
 - [ ] Search Books
 - [ ] Login & Register
 - [ ] Loan Books
 - [ ] Dashboard
-- [ ] Update Profile 
+- [ ] Update Profile
+- [ ] Change Password
+- [ ] Logout All
 
 It's just to demonstrated that I can build a fullstack application using Laravel and the others tech stack. This source of code is free to used. 
