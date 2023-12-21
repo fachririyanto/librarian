@@ -7,9 +7,11 @@ import { Input } from '@/components/ui/input'
 interface SearchFormProps {
     baseUrl: string,
     q?: string | string[] | undefined,
+    placeholder?: string,
+    cb?: () => void
 }
 
-export function SearchForm({ baseUrl, q }: SearchFormProps) {
+export function SearchForm({ baseUrl, q, placeholder = 'Find books...', cb }: SearchFormProps) {
     const router = useRouter()
 
     const [query, setQuery] = useState(q)
@@ -21,13 +23,17 @@ export function SearchForm({ baseUrl, q }: SearchFormProps) {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         router.push(`/${baseUrl}?q=${query}`)
+
+        if (typeof cb === 'function') {
+            cb()
+        }
     }
 
     return (
         <form onSubmit={ handleSubmit } className="relative">
             <Input
                 type="text"
-                placeholder="Find books..."
+                placeholder={ placeholder }
                 value={ query }
                 onChange={ handleChange }
                 className="pl-0 border-0 outline-0 border-b-2 border-gray-150 !ring-0 rounded-none !ring-offset-0 focus:border-black"
