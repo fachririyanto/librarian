@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Loader2 } from 'lucide-react'
 import { initialState, IFormRegister } from './type'
 import { doRegister } from './actions'
@@ -48,12 +48,10 @@ export default function FormRegiter() {
         <form onSubmit={ handleSubmit }>
             <div className="mb-6">
                 { error && <Alert variant="destructive">
-                    <AlertTitle>Error</AlertTitle>
                     <AlertDescription>{ error }</AlertDescription>
                 </Alert> }
 
                 { success && <Alert variant="default" className="border-green-500 text-green-600">
-                    <AlertTitle>Success</AlertTitle>
                     <AlertDescription>{ success }</AlertDescription>
                 </Alert> }
             </div>

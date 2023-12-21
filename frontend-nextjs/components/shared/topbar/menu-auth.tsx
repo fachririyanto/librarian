@@ -1,17 +1,12 @@
-import Link from 'next/link'
-import { ButtonLogout } from '../button-logout'
+import MenuAuthProfile from './menu-auth-profile'
+import type { TypeMember } from '@/lib/models/member'
 
-export default function MenuAuth() {
+interface MenuAuthProps {
+    profile: TypeMember | null
+}
+
+export default function MenuAuth({ profile }: MenuAuthProps) {
     return (
-        <>
-            <li className="">
-                <Link href="/dashboard">Dashboard</Link>
-            </li>
-            <li className="">
-                <ButtonLogout>
-                    Logout
-                </ButtonLogout>
-            </li>
-        </>
+        <MenuAuthProfile profile={ profile } />
     )
 }

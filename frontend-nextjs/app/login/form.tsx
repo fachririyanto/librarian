@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Loader2 } from 'lucide-react'
 import { doLogin } from './actions'
 
@@ -39,7 +39,6 @@ export default function FormLogin() {
         <form onSubmit={ handleSubmit }>
             <div className="mb-6">
                 { error && <Alert variant="destructive">
-                    <AlertTitle>Error</AlertTitle>
                     <AlertDescription>{ error }</AlertDescription>
                 </Alert> }
             </div>

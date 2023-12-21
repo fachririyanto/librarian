@@ -3,4 +3,7 @@ export interface IFormProfile {
     name: string
     phone: string
     address: string
+    avatar?: File | null | ''
+    avatarOld?: string
+    avatarPreview?: string
 }

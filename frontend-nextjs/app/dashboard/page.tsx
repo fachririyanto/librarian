@@ -9,14 +9,12 @@ export default async function Page() {
         return null
     }
 
-    const { member } = profile
-
     return (
         <section className="py-20">
             <div className="container-md">
                 <h1 className="mb-3 font-semibold text-2xl leading-none">Dashboard Page</h1>
                 <p className="mb-6">
-                    Hello, { member.name }
+                    Hello, { profile.name }
                 </p>
                 <ButtonLogout className={ buttonVariants({ variant: 'default' }) }>
                     Logout
