@@ -419,6 +419,47 @@ class MemberController extends Controller
         ]);
     }
 
+    // get list token by member
+    public function listTokens(Request $request) {
+        $tokens = MemberToken::select(
+            'id', 'token', 'refresh_token', 'access_token_invalidated', 'refresh_token_invalidated', 'ip_address', 'user_agent', 'created_at'
+        )->where('member_id', $request->member_id)->get();
+
+        // send response
+        return response()->json([
+            'code'      => 200,
+            'message'   => 'Get list token success',
+            'data'      => $tokens,
+        ]);
+    }
+
+    // delete token by id
+    public function deleteToken(Request $request) {
+        $token_id = $request->id;
+
+        // get token
+        $token = MemberToken::find($token_id);
+
+        // check token
+        if (!$token) {
+            return response()->json([
+                'code'      => 400,
+                'message'   => 'Token not found',
+                'data'      => [],
+            ], 400);
+        }
+
+        // delete token
+        $token->delete();
+
+        // send response
+        return response()->json([
+            'code'      => 200,
+            'message'   => 'Delete token success',
+            'data'      => [],
+        ]);
+    }
+
     // logout member
     public function logout(Request $request) {
         $member_id = $request->member_id;

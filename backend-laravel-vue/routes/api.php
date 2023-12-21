@@ -49,6 +49,10 @@ Route::middleware('jwt.auth')->prefix('private')->group(function () {
     Route::post('/update-profile', [MemberController::class, 'updateProfile']);
     Route::post('/change-password', [MemberController::class, 'changePassword']);
 
+    // token routes
+    Route::get('/list-tokens', [MemberController::class, 'listTokens']);
+    Route::delete('/delete-token/{id}', [MemberController::class, 'deleteToken']);
+
     // loan books routes
     Route::post('/loan-books', [LoanController::class, 'loanBooks']);
 });
