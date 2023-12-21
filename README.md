@@ -34,7 +34,7 @@ App for managing a library.
 - [ ] Dashboard
 - [X] Update Profile
 - [X] Change Password
-- [ ] Logout All
+- [X] Logout All
 
 #### Loan Book - Mobile App (Flutter/React Native)
 - [ ] Search Books
