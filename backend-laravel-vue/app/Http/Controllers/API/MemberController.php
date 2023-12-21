@@ -286,6 +286,26 @@ class MemberController extends Controller
     public function updateProfile(Request $request) {
         $member_id = $request->member_id;
 
+        // validate the request
+        $validator = Validator::make($request->all(), [
+            'name'      => 'required|string|max:255',
+            'phone'     => 'required|string|max:20',
+            'address'   => 'required|string|max:255',
+            'avatar'    => 'nullable|image|mimes:jpg,jpeg,png|max:1024',
+        ]);
+
+        // send failed response if request is not valid
+        if ($validator->fails()) {
+            // get first error message
+            $error = $validator->errors()->first();
+
+            return response()->json([
+                'code'      => 400,
+                'message'   => $error,
+                'data'      => [],
+            ], 400);
+        }
+
         // get member
         $member = Member::find($member_id);
 
@@ -293,7 +313,15 @@ class MemberController extends Controller
         $avatar = $request->file('avatar');
 
         // check avatar
-        $avatar_path = '';
+        $avatar_path = $member->avatar;
+
+        if (empty($avatar) && empty($request->avatar_old)) {
+            if (Storage::disk('public')->exists($member->avatar)) {
+                Storage::disk('public')->delete($member->avatar);
+            }
+
+            $avatar_path = '';
+        }
 
         if ($avatar) {
             // check file size
@@ -329,7 +357,7 @@ class MemberController extends Controller
         $member->name       = $request->name ?? $member->name;
         $member->phone      = $request->phone ?? $member->phone;
         $member->address    = $request->address ?? $member->address;
-        $member->avatar     = $avatar_path ?? $member->avatar;
+        $member->avatar     = $avatar_path;
         $member->updated_at = Carbon::now();
         $member->save();
 
@@ -339,6 +367,7 @@ class MemberController extends Controller
             'message'   => 'Update profile success',
             'data'      => [
                 'member_id' => $member_id,
+                'avatar'    => $avatar_path ?? '',
             ],
         ]);
     }
