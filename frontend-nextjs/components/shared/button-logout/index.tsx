@@ -14,3 +14,13 @@ export function ButtonLogout({ children, className }: ButtonLogoutProps) {
         </form>
     )
 }
+
+export function ButtonLogoutAll({ children, className }: ButtonLogoutProps) {
+    return (
+        <form method="POST" action="/api/auth/logout-all">
+            <button type="submit" className={ `${className}` }>
+                { children }
+            </button>
+        </form>
+    )
+}

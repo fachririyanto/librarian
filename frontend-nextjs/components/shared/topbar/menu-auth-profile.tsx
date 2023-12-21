@@ -71,6 +71,9 @@ export default function MenuAuthProfile({ profile }: MenuAuthProfileProps) {
                     <li>
                         <Link href="/dashboard/change-password" className="block py-2 hover:text-app-primary">Change Password</Link>
                     </li>
+                    <li>
+                        <Link href="/dashboard/login-history" className="block py-2 hover:text-app-primary">Login History</Link>
+                    </li>
                     <li className="mt-3 pt-5 border-t border-gray-100">
                         <ButtonLogout className={ buttonVariants({ variant: 'default' }) + ' flex w-full' }>
                             Logout
