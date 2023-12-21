@@ -23,3 +23,8 @@ export type LoginResponse = {
 export type ProfileResponse = {
     member: TypeMember
 }
+
+export type UpdateProfileResponse = {
+    member_id: number
+    avatar: string
+}

@@ -50,7 +50,6 @@ export async function fetchPrivateAPI<T>(path: string, params?: Object): Promise
     return fetch(`${API_ENDPOINT_URL}/${path}`, {
         headers: {
             'Authorization': 'Bearer ' + token,
-            'Content-Type': 'application/json',
         },
         ...params,
     }).then((res) => res.json())

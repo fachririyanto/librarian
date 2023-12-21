@@ -25,7 +25,7 @@ export async function getProfile() {
             return null
         }
 
-        return response.data
+        return response.data.member
     } catch (error) {
         return null
     }
