@@ -352,7 +352,7 @@
 								},
 								{
 									"key": "password",
-									"value": "aiueo123",
+									"value": "abcd1234",
 									"type": "text"
 								}
 							]
@@ -916,6 +916,63 @@
 							"path": [
 								"private",
 								"loan-books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Tokens",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/private/list-tokens",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"private",
+								"list-tokens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/private/delete-token/1",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"private",
+								"delete-token",
+								"1"
 							]
 						}
 					},
