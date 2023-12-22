@@ -21,6 +21,8 @@ export function ButtonDeleteToken({ tokenId }: ButtonDeleteTokenProps) {
 
         // refresh page
         router.refresh()
+
+        setLoading(false)
     }
 
     return (

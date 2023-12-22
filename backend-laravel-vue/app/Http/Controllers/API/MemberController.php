@@ -163,6 +163,15 @@ class MemberController extends Controller
         ]);
     }
 
+    // check session
+    public function checkSession(Request $request) {
+        return response()->json([
+            'code'      => 200,
+            'message'   => 'Token valid',
+            'data'      => [],
+        ]);
+    }
+
     // get refresh token
     public function refreshToken(Request $request) {
         $input = $request->all();
@@ -242,6 +251,7 @@ class MemberController extends Controller
             $member->access_token_invalidated   = 0;
             $member->refresh_token              = $refresh_token;
             $member->updated_at                 = Carbon::now();
+            $member->save();
 
             // send response
             return response()->json([

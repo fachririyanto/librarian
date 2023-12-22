@@ -17,12 +17,20 @@ export default async function useAuth() {
         cookieStore.set('token', token, {
             path: '/',
             maxAge: duration,
+            httpOnly: true,
         })
 
         cookieStore.set('refresh_token', refresh_token, {
             path: '/',
             maxAge: duration * 30,
+            httpOnly: true,
         })
+    }
+
+    // revoke token
+    const revokeToken = () => {
+        cookies().delete('token')
+        cookies().delete('refresh_token')
     }
 
     // check if user is logged in
@@ -34,6 +42,7 @@ export default async function useAuth() {
     return {
         getToken,
         setToken,
+        revokeToken,
         isUserLoggedIn,
     }
 }

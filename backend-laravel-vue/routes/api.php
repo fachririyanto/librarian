@@ -34,10 +34,11 @@ Route::middleware('api.key')->prefix('public')->group(function () {
 Route::prefix('auth')->group(function () {
     Route::post('/register', [MemberController::class, 'register']);
     Route::post('/login', [MemberController::class, 'login']);
+    Route::post('/refresh-token', [MemberController::class, 'refreshToken']);
 
     Route::middleware('jwt.auth')->group(function () {
         Route::get('/me', [MemberController::class, 'profile']);
-        Route::post('/refresh-token', [MemberController::class, 'refreshToken']);
+        Route::post('/check-session', [MemberController::class, 'checkSession']);
         Route::post('/logout', [MemberController::class, 'logout']);
         Route::post('/logout-all', [MemberController::class, 'logoutAll']);
     });
