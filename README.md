@@ -27,7 +27,7 @@ App for managing a library.
 - [X] Get Categories
 - [X] Loan Books
 
-#### Loan Book - Frontend (NextJS, Tailwind, Shadcn UI)
+#### Loan Book - Frontend (NextJS, Tailwind, Shadcn UI, Zustand)
 - [X] Search Books
 - [X] Login & Register
 - [ ] Loan Books
