@@ -2,10 +2,10 @@ import Link from 'next/link'
 import useAuth from '@/hooks/useAuth'
 import dynamic from 'next/dynamic'
 import { getProfile } from '@/lib/auth'
-
 import MenuSearch from './menu-search'
 
 const Menu = dynamic(() => import('./menu'))
+const MenuCart = dynamic(() => import('./menu-cart'), { ssr: false })
 const MenuAuth = dynamic(() => import('./menu-auth'))
 
 export default async function Topbar() {
@@ -25,11 +25,7 @@ export default async function Topbar() {
                         <ul className="flex gap-6 items-center text-sm leading-none">
                             { isUserLoggedIn() && <li className=""><Link href="/dashboard">Dashboard</Link></li> }
                             <MenuSearch />
-                            <li className="">
-                                <button>
-                                    <span className="material-symbols-outlined">shopping_bag</span>
-                                </button>
-                            </li>
+                            <MenuCart />
                             { isUserLoggedIn() ? <MenuAuth profile={ profile } /> : <Menu /> }
                         </ul>
                     </div>

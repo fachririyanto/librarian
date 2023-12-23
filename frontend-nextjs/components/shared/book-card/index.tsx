@@ -3,6 +3,8 @@ import Image from 'next/image'
 import type { TypeBook } from '@/lib/models/book'
 import { getStorageURL } from '@/lib/api'
 import { BookCardSkeleton } from './skeleton'
+import { ButtonAddToCart } from '../button-add-cart'
+import { buttonVariants } from '@/components/ui/button'
 
 function BookCard(book: TypeBook) {
     return (
@@ -27,6 +29,11 @@ function BookCard(book: TypeBook) {
                 </h3>
                 <p className="mt-0.5 text-[13px]">
                     { book.author }
+                </p>
+                <p className="relative z-20 mt-4">
+                    <ButtonAddToCart className={ buttonVariants({ variant: 'default' }) + ' w-full' } book={ book }>
+                        Add to cart
+                    </ButtonAddToCart>
                 </p>
             </div>
             <Link href={ `/book/${book.id}` } className="absolute inset-0 z-10">

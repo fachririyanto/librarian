@@ -11,7 +11,7 @@ interface ImageCoverProps {
 }
 
 export function ImageCover({ alt, w, h, src, className, ...rest }: ImageCoverProps) {
-    const ratio = w / h * 100
+    const ratio = h / w * 100
 
     return (
         <figure className={ `relative overflow-hidden ${className}` } style={{
@@ -23,6 +23,7 @@ export function ImageCover({ alt, w, h, src, className, ...rest }: ImageCoverPro
                     src={ src }
                     sizes="100%"
                     { ...rest }
+                    className="object-cover"
                 />
             </picture>
         </figure>

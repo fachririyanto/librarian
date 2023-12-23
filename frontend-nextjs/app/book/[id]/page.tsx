@@ -5,6 +5,8 @@ import { BookList } from '@/components/shared/book-list'
 import { Breadcrumb } from '@/components/shared/breadcrumb'
 import { getBook, getRelatedBooks } from '@/lib/models/book'
 import { getStorageURL } from '@/lib/api'
+import { ButtonAddToCart } from '@/components/shared/button-add-cart'
+import { buttonVariants } from '@/components/ui/button'
 
 export default async function Page({ params }: { params: { id: string } }) {
     const { data } = await getBook(params.id)
@@ -57,6 +59,11 @@ export default async function Page({ params }: { params: { id: string } }) {
                             <div className="">
                                 <p className="mb-4 text-sm leading-relaxed">
                                     { data.description ?? 'No description.' }
+                                </p>
+                                <p className="relative z-20 mt-4">
+                                    <ButtonAddToCart className={ buttonVariants({ variant: 'default' }) } book={ data }>
+                                        Add to cart
+                                    </ButtonAddToCart>
                                 </p>
                             </div>
                         </div>
